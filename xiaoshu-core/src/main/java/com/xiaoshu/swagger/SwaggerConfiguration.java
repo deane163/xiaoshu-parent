@@ -3,7 +3,7 @@ package com.xiaoshu.swagger;
 import io.swagger.annotations.Api;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,10 +17,39 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * 
+ * code is far away from bug with the animal protecting
+ * ┏┓　　　┏┓
+ * ┏┛┻━━━┛┻┓
+ * ┃　　　　　　　┃
+ * ┃　　　━　　　┃
+ * ┃　┳┛　┗┳　┃
+ * ┃　　　　　　　┃
+ * ┃　　　┻　　　┃
+ * ┃　　　　　　　┃
+ * ┗━┓　　　┏━┛
+ * 　　┃　　　┃神兽保佑
+ * 　　┃　　　┃代码无BUG！
+ * 　　┃　　　┗━━━┓
+ * 　　┃　　　　　　　┣┓
+ * 　　┃　　　　　　　┏┛
+ * 　　┗┓┓┏━┳┓┏┛
+ * 　　　┃┫┫　┃┫┫
+ * 　　　┗┻┛　┗┻┛
+ *
+ *
+ * @Description : Swagger配置信息
+ * ---------------------------------
+ * @Author : deane.administrator
+ * @Date : Create in 2017年12月9日上午11:36:08
+ * 
+ * Copyright (C)2013-2017 小树盛凯科技 All rights reserved.
+ */
 @Configuration
 @EnableSwagger2
 @EnableConfigurationProperties(value = SwaggerProperties.class)
-@AutoConfigureAfter(SwaggerProperties.class)
+@ConditionalOnBean(SwaggerProperties.class)
 public class SwaggerConfiguration {
 
 	@Autowired

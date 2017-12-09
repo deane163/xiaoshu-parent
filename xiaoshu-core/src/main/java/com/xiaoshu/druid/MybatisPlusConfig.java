@@ -12,6 +12,8 @@ import org.apache.ibatis.plugin.Interceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.boot.autoconfigure.MybatisProperties;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.bind.RelaxedPropertyResolver;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -37,6 +39,7 @@ import com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean;
 import com.baomidou.mybatisplus.spring.boot.starter.SpringBootVFS;
 
 /**
+ * 
  * code is far away from bug with the animal protecting
  * ┏┓　　　┏┓
  * ┏┛┻━━━┛┻┓
@@ -57,13 +60,16 @@ import com.baomidou.mybatisplus.spring.boot.starter.SpringBootVFS;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : MybatisPlus配置
+ * @Description : Mybatis_plus 配置信息
  * ---------------------------------
- * @Author : Liang.Guangqing
- * @Date : Create in 2017/9/19 13:54
+ * @Author : deane.administrator
+ * @Date : Create in 2017年12月9日上午11:35:58
+ * 
+ * Copyright (C)2013-2017 小树盛凯科技 All rights reserved.
  */
 @Configuration
 @EnableConfigurationProperties(MybatisProperties.class)
+@ConditionalOnBean(MybatisProperties.class)
 @MapperScan("com.xiaoshu.mapper*")
 public class MybatisPlusConfig {
 
@@ -84,11 +90,11 @@ public class MybatisPlusConfig {
     /**
      * @Description : mybatis-plus SQL执行效率插件【生产环境可以关闭】
      * ---------------------------------
-     * @Author : Liang.Guangqing
-     * @Date : Create in 2017/9/19 13:57
      */
     @Bean
+    @ConditionalOnProperty(havingValue ="mybatis.performanceInterceptor")
     public PerformanceInterceptor performanceInterceptor() {
+    	System.out.println("================= 注入 Performance Interceptor =================");
         return new PerformanceInterceptor();
     }
 
@@ -123,8 +129,6 @@ public class MybatisPlusConfig {
     /**
      * @Description : mybatis-plus分页插件
      * ---------------------------------
-     * @Author : Liang.Guangqing
-     * @Date : Create in 2017/9/19 13:59
      */
     @Bean
     public PaginationInterceptor paginationInterceptor() {
