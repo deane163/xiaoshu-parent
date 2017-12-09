@@ -1,5 +1,6 @@
 package com.xiaoshu.dubbo;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
@@ -34,6 +35,7 @@ import org.springframework.context.annotation.PropertySource;
  * Copyright (C)2013-2017 小树盛凯科技 All rights reserved.
  */
 @Configuration
+@ConditionalOnProperty(name = "dubbo.configuration.open", havingValue = "true")
 @PropertySource("classpath:dubbo.properties")
 @ImportResource("classpath*:dubbo.xml")
 public class DubboConfig {
