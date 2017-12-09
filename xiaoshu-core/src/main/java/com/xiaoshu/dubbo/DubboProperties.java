@@ -1,7 +1,8 @@
 package com.xiaoshu.dubbo;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnResource;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
@@ -35,9 +36,10 @@ import org.springframework.stereotype.Component;
  * Copyright (C)2013-2017 小树盛凯科技 All rights reserved.
  */
 @Component
-@ConditionalOnProperty(value ="dubbo", prefix = "dubbo")
-@ConditionalOnResource(resources = {"classpath:dubbo.properties"})
+@ConditionalOnResource(resources={"classpath:dubbo.properties"})
+@ConfigurationProperties(prefix="dubbo")
 @PropertySource(value = "classpath:dubbo.properties")
+@Primary
 public class DubboProperties {
 
 	private String applicationName;

@@ -9,11 +9,8 @@ import javax.sql.DataSource;
 
 import org.apache.ibatis.mapping.DatabaseIdProvider;
 import org.apache.ibatis.plugin.Interceptor;
-import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.boot.autoconfigure.MybatisProperties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.bind.RelaxedPropertyResolver;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -69,8 +66,6 @@ import com.baomidou.mybatisplus.spring.boot.starter.SpringBootVFS;
  */
 @Configuration
 @EnableConfigurationProperties(MybatisProperties.class)
-@ConditionalOnBean(MybatisProperties.class)
-@MapperScan("com.xiaoshu.mapper*")
 public class MybatisPlusConfig {
 
     @Autowired
@@ -92,7 +87,6 @@ public class MybatisPlusConfig {
      * ---------------------------------
      */
     @Bean
-    @ConditionalOnProperty(havingValue ="mybatis.performanceInterceptor")
     public PerformanceInterceptor performanceInterceptor() {
     	System.out.println("================= 注入 Performance Interceptor =================");
         return new PerformanceInterceptor();

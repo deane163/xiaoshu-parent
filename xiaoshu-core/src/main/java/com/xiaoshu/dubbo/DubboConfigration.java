@@ -2,8 +2,6 @@ package com.xiaoshu.dubbo;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -45,9 +43,7 @@ import com.alibaba.dubbo.rpc.Exporter;
  * Copyright (C)2013-2017 小树盛凯科技 All rights reserved.
  */
 @Configuration
-@EnableAutoConfiguration
-@EnableConfigurationProperties(value = DubboProperties.class)
-@ConditionalOnBean(DubboProperties.class)
+@EnableConfigurationProperties(DubboProperties.class)
 @ConditionalOnClass(Exporter.class)
 public class DubboConfigration {
 
