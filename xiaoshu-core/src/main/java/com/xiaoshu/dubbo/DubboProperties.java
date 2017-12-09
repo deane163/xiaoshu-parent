@@ -35,8 +35,8 @@ import org.springframework.stereotype.Component;
  * Copyright (C)2013-2017 小树盛凯科技 All rights reserved.
  */
 @Component
-@ConditionalOnProperty(prefix = "dubbo")
-@ConditionalOnResource(resources = { "classpath:dubbo.properties" })
+@ConditionalOnProperty(value ="dubbo", prefix = "dubbo")
+@ConditionalOnResource(resources = {"classpath:dubbo.properties"})
 @PropertySource(value = "classpath:dubbo.properties")
 public class DubboProperties {
 

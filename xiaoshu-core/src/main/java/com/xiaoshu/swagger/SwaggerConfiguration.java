@@ -4,7 +4,6 @@ import io.swagger.annotations.Api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -48,7 +47,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-@EnableConfigurationProperties(value = SwaggerProperties.class)
 @ConditionalOnBean(SwaggerProperties.class)
 public class SwaggerConfiguration {
 
@@ -64,9 +62,7 @@ public class SwaggerConfiguration {
 				//2）通过注解的方式实现Swagger2的加载
 				.apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
 				.paths(PathSelectors.any()).build();
-
 	}
-
 
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
@@ -77,5 +73,4 @@ public class SwaggerConfiguration {
 								.getContactUrl(), properties.getContactEmail()))
 				.version("1.0.0").build();
 	}
-
 }

@@ -1,8 +1,5 @@
 package com.xiaoshu.swagger;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnResource;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 /**
@@ -35,16 +32,13 @@ import org.springframework.stereotype.Component;
  * Copyright (C)2013-2017 小树盛凯科技 All rights reserved.
  */
 @Component
-@ConditionalOnResource(resources = {"classpath:swagger.properties" })
-@PropertySource(value = "classpath:swagger.properties")
-@ConfigurationProperties(prefix = "swagger")
 public class SwaggerProperties {
 
 	private String basePackage;
 
 	private String contactName = "XiaoshuShengkai";
 
-	private String contactUrl;
+	private String contactUrl = "http://www.xiaoshu.com";
 
 	private String contactEmail = "deane163@126.com";
 
