@@ -35,7 +35,7 @@ import org.springframework.context.annotation.PropertySource;
  * Copyright (C)2013-2017 小树盛凯科技 All rights reserved.
  */
 @Configuration
-@ConditionalOnProperty(name = "dubbo.configuration.open", havingValue = "true")
+@ConditionalOnProperty(name = "configuration.open.dubbo", havingValue = "true")
 @PropertySource("classpath:dubbo.properties")
 @ImportResource("classpath*:dubbo.xml")
 public class DubboConfig {
