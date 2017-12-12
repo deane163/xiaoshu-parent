@@ -42,7 +42,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * @Date : Create in 2017年12月12日下午7:42:56
  * 
  * Copyright (C)2013-2017 小树盛凯科技 All rights reserved.
- * 参考：
+ * 参考：https://www.cnblogs.com/ncjava/p/7132729.html
  */
 @Configuration
 @ConditionalOnProperty(name = "configuration.open.redis", havingValue = "true")
