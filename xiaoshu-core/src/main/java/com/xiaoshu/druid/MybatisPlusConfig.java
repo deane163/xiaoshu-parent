@@ -11,6 +11,7 @@ import org.apache.ibatis.mapping.DatabaseIdProvider;
 import org.apache.ibatis.plugin.Interceptor;
 import org.mybatis.spring.boot.autoconfigure.MybatisProperties;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.bind.RelaxedPropertyResolver;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -65,6 +66,7 @@ import com.baomidou.mybatisplus.spring.boot.starter.SpringBootVFS;
  * Copyright (C)2013-2017 小树盛凯科技 All rights reserved.
  */
 @Configuration
+@ConditionalOnProperty(name = "configuration.open.mybatis", havingValue = "true")
 @EnableConfigurationProperties(MybatisProperties.class)
 public class MybatisPlusConfig {
 
