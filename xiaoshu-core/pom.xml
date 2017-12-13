@@ -47,17 +47,18 @@
 			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
 
-		<!-- MongoDb support -->
-		<!-- 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session</artifactId>
 		</dependency>
-		 -->
-		<dependency>  
-            <groupId>org.apache.activemq</groupId>  
-            <artifactId>activemq-pool</artifactId>  
-        </dependency>
+
+		<!-- MongoDb support -->
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-data-mongodb</artifactId> 
+			</dependency> -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-pool</artifactId>
+		</dependency>
 		<!-- MongoDb end -->
 
 		<!-- activeMq support -->

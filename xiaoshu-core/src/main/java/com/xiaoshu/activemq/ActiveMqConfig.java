@@ -10,6 +10,6 @@ import org.springframework.context.annotation.PropertySource;
 public class ActiveMqConfig {
 
 	public ActiveMqConfig(){
-		System.out.println("初始化 :Active配置信息");
+		System.out.println("====>初始化： ActiveMQ 配置信息");
 	}
 }
