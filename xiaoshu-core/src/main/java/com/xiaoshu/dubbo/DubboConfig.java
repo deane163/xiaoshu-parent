@@ -27,7 +27,7 @@ import org.springframework.context.annotation.PropertySource;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : 
+ * @Description : Dubbo 信息接入
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2017年12月9日下午5:03:48

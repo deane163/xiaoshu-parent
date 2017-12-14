@@ -36,7 +36,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : 
+ * @Description : Redis 信息接入
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2017年12月12日下午7:42:56
