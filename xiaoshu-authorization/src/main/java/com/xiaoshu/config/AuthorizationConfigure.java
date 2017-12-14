@@ -29,7 +29,7 @@ import com.xiaoshu.interceptor.AuthorizationInterceptor;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : 
+ * @Description : 添加 Interceptor
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2017年12月14日下午6:22:07
