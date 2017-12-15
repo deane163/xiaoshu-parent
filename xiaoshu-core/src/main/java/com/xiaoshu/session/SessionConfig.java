@@ -25,7 +25,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : 
+ * @Description : 初始化： Spring Session 配置信息
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2017年12月13日下午6:11:23
