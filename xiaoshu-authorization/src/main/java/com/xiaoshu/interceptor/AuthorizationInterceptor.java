@@ -4,12 +4,14 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.xiaoshu.annotation.Authorization;
 import com.xiaoshu.config.Constants;
+import com.xiaoshu.manager.TokenManager;
 
 /**
  * 
@@ -33,7 +35,7 @@ import com.xiaoshu.config.Constants;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : 
+ * @Description : 通过HandlerInteper 对注解进行拦截操作。
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2017年12月14日下午6:23:48
@@ -43,6 +45,10 @@ import com.xiaoshu.config.Constants;
 
 @Component
 public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
+	
+	@Autowired(required = false)
+	private TokenManager tokenManager;
+	
 	/**
 	 * This implementation always returns {@code true}.
 	 */
@@ -61,9 +67,16 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
 				&&method.getMethodAnnotation(Authorization.class)==null){
 			return true;
 		}
-		//从head中获取验证信息
-		//String authentication = getAuthentication(request);
 		
+		
+				
+		//从head中获取验证信息
+		String token = getAuthentication(request);
+		//如果Token无效，则直接返回
+		if(!tokenManager.checkToken(token)){
+			response.sendError(HttpServletResponse.SC_FORBIDDEN, " Token is invalid");
+			return false;
+		}
 		//TokenModel tokenModel = tokenManger.getToken(authentication);
 		//if(tokenModel==null||!tokenManger.checkToken(tokenModel)){
 			// response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -87,7 +100,6 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
 	 * @param request
 	 * @return
 	 */
-	@SuppressWarnings({"unused" })
 	private String getAuthentication(HttpServletRequest request) {
 		String authentication = request.getHeader(Constants.AUTHORIZATION);
 		if (authentication == null) {
