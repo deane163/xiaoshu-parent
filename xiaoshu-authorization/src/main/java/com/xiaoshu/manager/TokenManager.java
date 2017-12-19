@@ -33,7 +33,6 @@ public interface TokenManager {
 
 	public boolean checkToken(String token);
 	
-	
 	public String createToken(String userName,String password);
 	
 }

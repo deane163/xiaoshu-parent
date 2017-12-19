@@ -54,12 +54,12 @@ import com.xiaoshu.manager.TokenManager;
 @Component
 public class ClientValideInterceptor {
 	
-	@Autowired
+	@Autowired(required = false)
 	private TokenManager tokenManager;
 
 	@Pointcut("@annotation(com.xiaoshu.annotation.ClientAuthorization)")
 	private void anyMethod(){
-		
+		//定义切点
 	}
 	
 	@Around("anyMethod()")
@@ -80,7 +80,7 @@ public class ClientValideInterceptor {
         String token = getAuthentication(request);
         //如果Token 大小不符合规则，无效则抛出异常
 		if(StringUtils.isEmpty(token)){
-			response.sendError(HttpServletResponse.SC_FORBIDDEN, "Token is null or Token is invalid");
+			response.sendError(HttpServletResponse.SC_FORBIDDEN, "Token is null");
 			return null;
 		}
 		//如果Token无效，则直接返回
