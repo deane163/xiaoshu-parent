@@ -5,6 +5,35 @@ import javax.servlet.http.HttpServletResponse;
 import com.xiaoshu.exception.BussinessException;
 import com.xiaoshu.handler.ErrorEnumHandler;
 
+/**
+ * 
+ * code is far away from bug with the animal protecting
+ * ┏┓　　　┏┓
+ * ┏┛┻━━━┛┻┓
+ * ┃　　　　　　　┃
+ * ┃　　　━　　　┃
+ * ┃　┳┛　┗┳　┃
+ * ┃　　　　　　　┃
+ * ┃　　　┻　　　┃
+ * ┃　　　　　　　┃
+ * ┗━┓　　　┏━┛
+ * 　　┃　　　┃神兽保佑
+ * 　　┃　　　┃代码无BUG！
+ * 　　┃　　　┗━━━┓
+ * 　　┃　　　　　　　┣┓
+ * 　　┃　　　　　　　┏┛
+ * 　　┗┓┓┏━┳┓┏┛
+ * 　　　┃┫┫　┃┫┫
+ * 　　　┗┻┛　┗┻┛
+ *
+ *
+ * @Description : 
+ * ---------------------------------
+ * @Author : deane.administrator
+ * @Date : Create in 2017年12月20日下午3:31:15
+ * 
+ * Copyright (C)2013-2017 小树盛凯科技 All rights reserved.
+ */
 public enum CommonErrorEnum implements ErrorEnumHandler {
 
 	/**
