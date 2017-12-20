@@ -17,6 +17,7 @@
 	<modules>
 		<module>xiaoshu-core</module>
     <module>xiaoshu-authorization</module>
+    <module>xiaoshu-common</module>
   </modules>
 
 	<name>xiaoshu-parent</name>
