@@ -32,7 +32,7 @@ import com.xiaoshu.model.ErrorResponse;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : 
+ * @Description : 统一抛出异常处理，返回方式处理
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2017年12月20日下午3:31:00
