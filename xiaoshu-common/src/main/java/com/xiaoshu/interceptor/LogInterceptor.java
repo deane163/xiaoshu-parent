@@ -11,7 +11,35 @@ import org.springframework.stereotype.Component;
 
 import com.xiaoshu.service.SystemLogService;
 
-
+/**
+ * 
+ * code is far away from bug with the animal protecting
+ * ┏┓　　　┏┓
+ * ┏┛┻━━━┛┻┓
+ * ┃　　　　　　　┃
+ * ┃　　　━　　　┃
+ * ┃　┳┛　┗┳　┃
+ * ┃　　　　　　　┃
+ * ┃　　　┻　　　┃
+ * ┃　　　　　　　┃
+ * ┗━┓　　　┏━┛
+ * 　　┃　　　┃神兽保佑
+ * 　　┃　　　┃代码无BUG！
+ * 　　┃　　　┗━━━┓
+ * 　　┃　　　　　　　┣┓
+ * 　　┃　　　　　　　┏┛
+ * 　　┗┓┓┏━┳┓┏┛
+ * 　　　┃┫┫　┃┫┫
+ * 　　　┗┻┛　┗┻┛
+ *
+ *
+ * @Description : 
+ * ---------------------------------
+ * @Author : deane.administrator
+ * @Date : Create in 2017年12月25日下午5:31:44
+ * 
+ * Copyright (C)2013-2017 小树盛凯科技 All rights reserved.
+ */
 @Aspect
 @Component
 public class LogInterceptor {
