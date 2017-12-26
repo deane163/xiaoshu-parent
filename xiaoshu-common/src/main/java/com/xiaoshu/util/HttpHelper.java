@@ -1,5 +1,9 @@
-package com.xiaoshu.handler;
+package com.xiaoshu.util;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 /**
  * 
  * code is far away from bug with the animal protecting
@@ -22,18 +26,19 @@ package com.xiaoshu.handler;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : 异常信息处理接口，统一定义抛出异常
+ * @Description : Http Helper
  * ---------------------------------
  * @Author : deane.administrator
- * @Date : Create in 2017年12月20日下午3:31:07
+ * @Date : Create in 2017年12月26日下午8:09:38
  * 
  * Copyright (C)2013-2017 小树盛凯科技 All rights reserved.
  */
-public interface ErrorEnumHandler {
+public class HttpHelper {
 
-    /**
-     * 用于 CommonErrorEnum 或 BussinessErrorEnum 中抛出异常
-     */
-    public void throwsException() throws Exception;
-	
+	public static HttpServletRequest getHttpServletRequest() {
+		if(null != RequestContextHolder.getRequestAttributes())
+			return ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+		else
+			return null;
+	}
 }
