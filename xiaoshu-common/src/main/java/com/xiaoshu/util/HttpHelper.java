@@ -26,7 +26,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : Http Helper
+ * @Description : Http Helper 工具类实现
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2017年12月26日下午8:09:38

@@ -29,7 +29,7 @@ import org.apache.log4j.Logger;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : 
+ * @Description : IpHelper 工具类实现
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2017年12月26日下午8:11:01
