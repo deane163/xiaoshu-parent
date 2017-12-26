@@ -25,7 +25,7 @@ import com.xiaoshu.model.ErrorResponse;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : 
+ * @Description : 异常信息，继承 Exception
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2017年12月20日下午3:30:44
