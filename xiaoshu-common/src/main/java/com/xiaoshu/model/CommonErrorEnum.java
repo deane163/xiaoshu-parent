@@ -27,7 +27,7 @@ import com.xiaoshu.handler.ErrorEnumHandler;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : 
+ * @Description : 错误类型的枚举类型;
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2017年12月20日下午3:31:15
