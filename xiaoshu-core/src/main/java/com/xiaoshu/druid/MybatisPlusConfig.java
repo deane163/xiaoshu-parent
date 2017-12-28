@@ -58,7 +58,7 @@ import com.baomidou.mybatisplus.spring.boot.starter.SpringBootVFS;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : Mybatis_plus 配置信息
+ * @Description : Mybatis_plus 配置信息;同时配置 Druid的配置信息
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2017年12月9日上午11:35:58
