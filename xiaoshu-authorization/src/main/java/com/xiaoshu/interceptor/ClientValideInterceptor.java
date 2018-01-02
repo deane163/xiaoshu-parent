@@ -41,7 +41,7 @@ import com.xiaoshu.manager.ClientValidManager;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : 通过AOP的方法，对注解进行拦截操作
+ * @Description : 通过AOP的方法，对注解进行拦截操作，主要是验证 请求端的合法性验证
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2017年12月19日下午8:02:47
