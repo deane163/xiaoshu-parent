@@ -27,7 +27,7 @@ import org.springframework.web.client.RestTemplate;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : RestTemplate 服务类
+ * @Description : RestTemplate 服务类; 提供 RestFul 服务调用类
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2017年12月13日下午3:39:19
