@@ -1,5 +1,7 @@
 package com.xiaoshu.rest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,12 +39,13 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class RestTemplateConfig {
 
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	private RestTemplate restTemplate = new RestTemplate();
 	
 	@Bean
 	@ConditionalOnMissingBean(RestTemplate.class)
 	public RestTemplate  restTemplate(){
-		System.out.println("====> 初始化:RestTemplate 工具类");
+		logger.info("====> 初始化:RestTemplate 工具类");
 		return this.restTemplate;
 	}
 }
