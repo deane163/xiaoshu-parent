@@ -4,7 +4,6 @@ import java.lang.reflect.Method;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -19,7 +18,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSONObject;
 import com.xiaoshu.annotation.Log;
+import com.xiaoshu.model.LogInfo;
 import com.xiaoshu.service.SystemLogService;
+import com.xiaoshu.task.Task;
 import com.xiaoshu.util.HttpHelper;
 import com.xiaoshu.util.IpHelper;
 
@@ -61,49 +62,56 @@ public class LogInterceptor {
 	@Autowired(required = false)
 	private SystemLogService systemLogService;
 	
+
+	@SuppressWarnings("rawtypes")
+    @Autowired
+	private Task task;
+	
 	private static final String LOG_CONTENT = "[类名]:%s,[方法参数]:%s";
 
 	@Pointcut("@annotation(com.xiaoshu.annotation.Log)")
 	private void anyMethod() {
 		// 定义切入点，Poincut
 	}
+	
 
-	@Around("anyMethod()")
+	@SuppressWarnings("unchecked")
+    @Around("anyMethod()")
 	public Object doExecute(ProceedingJoinPoint joinPoint) throws Throwable {
-		HttpServletRequest request = HttpHelper.getHttpServletRequest();
-		logger.info("进行日志信息记录...");
-		if (null == request)
-			return joinPoint.proceed();
-
-		// 获取ip地址
-		String ipAddress = IpHelper.getIpAddr(request);
-		// 获取用户id，此处先定义为空，后面再获得用户的id
-		//String userId = StringUtils.EMPTY;
-		String deviceId = StringUtils.EMPTY;
-
-		MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-		Method method = signature.getMethod();
-		Log log = method.getAnnotation(Log.class);
-		// 获取操作说明
-		String operation = log.value();
-		// 获取操作类型
-		String operationType = log.type().toString();
-		// 获取类名
-		String className = joinPoint.getTarget().getClass().getName();
-		// 获取参数
-		Object[] params = joinPoint.getArgs();
-		String paramsStr = getParamStr(params, method);
-
-		String content = String.format(LOG_CONTENT, className, method.getName()
-				+ paramsStr);
-		// 执行操作
-		StopWatch clock = new StopWatch();
-		clock.start(); // 计时开始
-		Object object = joinPoint.proceed();
-		clock.stop(); // 计时结束
-		systemLogService.saveLog(content, ipAddress, operation, operationType, clock.getTotalTimeSeconds(), deviceId);
+	   logger.info("进入切面，对日志数据进行处理"); 
+       HttpServletRequest request = HttpHelper.getHttpServletRequest();
+        //获取ip地址
+       String ipAddress =  IpHelper.getIpAddr(request);
+       
+       MethodSignature signature = (MethodSignature)joinPoint.getSignature();
+       Method method = signature.getMethod();
+       Log log = method.getAnnotation(Log.class);
+       //获取操作类型
+       String operation = log.value();
+       String operationType = log.type().toString();
+       //获取类名
+       String className = joinPoint.getTarget().getClass().getName();
+       //获取参数
+       Object[] params = joinPoint.getArgs();
+       String paramsStr = getParamStr(params,method);
+       
+       String content =  String.format(LOG_CONTENT, className, method.getName()+paramsStr );
+       StopWatch clock = new StopWatch();
+       clock.start();
+       Object object = joinPoint.proceed();
+       clock.stop();
+       LogInfo logInfo = new LogInfo();
+       logInfo.setContent(content);
+       logInfo.setCostTime(110L);
+       logInfo.setOperation(operation);
+       logInfo.setOperationType(operationType);
+		
+       logInfo.setDeviceId("12345678");
+       logInfo.setIpAddress(ipAddress);
+       task.addQueue(logInfo);
+		//systemLogService.saveLog(content, ipAddress, operation, operationType, clock.getTotalTimeSeconds(), deviceId);
 		//返回执行信息
-		return object;
+       return object;
 	}
 	
 	private String getParamStr(Object[] params, Method method) {

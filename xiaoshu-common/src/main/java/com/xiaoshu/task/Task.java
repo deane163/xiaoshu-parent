@@ -49,7 +49,7 @@ public abstract class Task <T> implements Runnable{
     public Queue<T> queues =  new ConcurrentLinkedQueue<T>();
     private ReentrantLock lock = new ReentrantLock();
     
-    private static Task task;
+    private static Task<?> task;
     /**
      * 使用当独线程时，线程的休眠时间
      */
@@ -63,6 +63,7 @@ public abstract class Task <T> implements Runnable{
     
     
     public void addQueue(T t){
+        System.out.println("异步加入队列");
         queues.add(t);
     }
     
@@ -92,6 +93,7 @@ public abstract class Task <T> implements Runnable{
             //讲数据取到ConcurrentArrayList中
             T t = queues.poll();
             while (t != null){
+                System.out.println("//==================== +1" );
                 datas.add(t);
                 t = queues.poll();
             }
@@ -109,6 +111,7 @@ public abstract class Task <T> implements Runnable{
         while(true){
             try {
                 Thread.sleep(SLEEP_TIME);
+                System.out.println("//===========> 每5秒进行日志的处理");
                 execute();
             } catch (Exception e) {
                 // TODO: handle exception

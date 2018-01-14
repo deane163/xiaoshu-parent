@@ -48,7 +48,7 @@ public class LogInfo implements Serializable {
     private String content;
     private String ipAddress;
     private String operation;
-    private int operationType;
+    private String operationType;
 
     private long costTime;
     private String deviceId;
@@ -101,7 +101,7 @@ public class LogInfo implements Serializable {
     /**
      * @return the operationType
      */
-    public int getOperationType() {
+    public String getOperationType() {
         return operationType;
     }
 
@@ -109,7 +109,7 @@ public class LogInfo implements Serializable {
      * @param operationType
      *            the operationType to set
      */
-    public void setOperationType(int operationType) {
+    public void setOperationType(String operationType) {
         this.operationType = operationType;
     }
 

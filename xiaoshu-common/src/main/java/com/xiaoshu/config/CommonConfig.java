@@ -6,10 +6,11 @@ package com.xiaoshu.config;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
-import com.xiaoshu.task.Task;
 import com.xiaoshu.task.impl.LogTask;
 
 /**
@@ -44,22 +45,23 @@ import com.xiaoshu.task.impl.LogTask;
 @Configuration
 public class CommonConfig {
 
-    private Task task;
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     
+    @SuppressWarnings("rawtypes")
     @Autowired
     private LogTask logTask;
     
     @PostConstruct
     public void start(){
-        task = logTask;
-        Thread logThread = new Thread(task);
+        logger.info(" start handle the log information ");
+        Thread logThread = new Thread(logTask);
         logThread.start();
     }
     
     
     @PreDestroy
     public void destory(){
-        
+        logger.info("start destroy the context ");
     }
    
 }

@@ -4,6 +4,8 @@ import static java.lang.annotation.ElementType.METHOD;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import com.xiaoshu.enums.LogType;
@@ -40,6 +42,7 @@ import com.xiaoshu.enums.LogType;
 @Documented
 @Inherited
 @Target({METHOD})
+@Retention(RetentionPolicy.RUNTIME)
 public @interface Log {
 
 	/**
