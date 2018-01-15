@@ -55,7 +55,6 @@ public class CommonConfig {
     public void start(){
         logger.info(" start handle the log information ");
         Thread logThread = new Thread(logTask);
-        logThread.setDaemon(true);
         logThread.start();
     }
     
