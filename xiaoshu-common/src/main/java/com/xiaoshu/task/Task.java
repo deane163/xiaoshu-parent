@@ -11,6 +11,8 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.locks.ReentrantLock;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;
 
 import com.xiaoshu.task.impl.LogTask;
@@ -46,6 +48,7 @@ import com.xiaoshu.task.impl.LogTask;
  */
 public abstract class Task <T> implements Runnable{
 
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
     public Queue<T> queues =  new ConcurrentLinkedQueue<T>();
     private ReentrantLock lock = new ReentrantLock();
     
@@ -60,7 +63,6 @@ public abstract class Task <T> implements Runnable{
     public Task(DataHandler<T> handler){
         this.handler = handler;
     }
-    
     
     public void addQueue(T t){
         System.out.println("异步加入队列");
@@ -93,7 +95,7 @@ public abstract class Task <T> implements Runnable{
             //讲数据取到ConcurrentArrayList中
             T t = queues.poll();
             while (t != null){
-                System.out.println("//==================== +1" );
+            	logger.info("// ===============> 任务队列 +1");
                 datas.add(t);
                 t = queues.poll();
             }
@@ -106,12 +108,13 @@ public abstract class Task <T> implements Runnable{
         }
     }
     
+    // 持续从任务队列中取任务，并执行任务
     @Override
     public void run(){
         while(true){
             try {
                 Thread.sleep(SLEEP_TIME);
-                System.out.println("//===========> 每5秒进行日志的处理");
+                logger.info("//===========> 每5秒进行日志的处理");
                 execute();
             } catch (Exception e) {
                 // TODO: handle exception
