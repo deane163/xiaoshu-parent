@@ -27,7 +27,7 @@ import java.util.List;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : 
+ * @Description : 数据处理的接口，实现此类后，可以完成不同数据的处理操作。
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2018年1月13日 下午4:14:43

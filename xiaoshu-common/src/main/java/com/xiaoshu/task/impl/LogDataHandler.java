@@ -44,8 +44,8 @@ public class LogDataHandler implements DataHandler<LogInfo> {
 
     @Override
     public void handlerData(List<LogInfo> t) {
-        // TODO Auto-generated method stub
         System.out.println("将 Log 数据插入到数据库 , 数据量为： size" + t.size());
+        //LogService.batchSaveLog(List<LogInfo> logs);
     }
 
 }

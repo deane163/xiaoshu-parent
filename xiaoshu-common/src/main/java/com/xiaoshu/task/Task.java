@@ -37,7 +37,7 @@ import com.xiaoshu.task.impl.LogTask;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : 
+ * @Description : 基于线程处理任务，批量的数据处理。（适合批量的日志数据处理）
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2018年1月13日 下午4:06:14
