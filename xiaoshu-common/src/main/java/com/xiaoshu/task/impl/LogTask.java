@@ -32,7 +32,7 @@ import com.xiaoshu.task.Task;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : 
+ * @Description : 专门处理Log的日志类，进行日志的操作处理
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2018年1月13日 下午4:49:29

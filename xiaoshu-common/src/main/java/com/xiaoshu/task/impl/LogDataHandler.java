@@ -32,7 +32,7 @@ import com.xiaoshu.task.DataHandler;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : 
+ * @Description : // 批量处理日志数据，批量将日志数据插入到数据库。
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2018年1月13日 下午4:42:37
