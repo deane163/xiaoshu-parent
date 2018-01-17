@@ -41,6 +41,6 @@ import org.springframework.context.annotation.PropertySource;
 public class DubboConfig {
 
 	public DubboConfig(){
-		System.out.println("====>初始化：Dubbo 配置信息");
+		System.out.println("====> initial Dubbo Configure ：Dubbo Configure Information <======");
 	}
 }

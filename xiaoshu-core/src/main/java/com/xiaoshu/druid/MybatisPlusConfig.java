@@ -90,7 +90,7 @@ public class MybatisPlusConfig {
      */
     @Bean
     public PerformanceInterceptor performanceInterceptor() {
-    	System.out.println("================= 注入 Performance Interceptor =================");
+    	System.out.println("=================> Injected Performance Interceptor =================");
         return new PerformanceInterceptor();
     }
 
@@ -103,7 +103,7 @@ public class MybatisPlusConfig {
     public DataSource druidDataSource() throws SQLException {
         this.propertyResolver = new RelaxedPropertyResolver(environment, "spring.datasource.");
 
-        System.out.println("====================注入druid!====================");
+        System.out.println("====================> Injected The  Druid <====================");
         DruidDataSource datasource = new DruidDataSource();
         datasource.setUrl(propertyResolver.getProperty("url"));
         datasource.setDriverClassName(propertyResolver.getProperty("driver-class-name"));
