@@ -64,7 +64,7 @@ public class LogInterceptor {
 	
 
 	@SuppressWarnings("rawtypes")
-    @Autowired
+    @Autowired(required = false)
 	private Task task;
 	
 	private static final String LOG_CONTENT = "[类名]:%s,[方法参数]:%s";
@@ -108,8 +108,11 @@ public class LogInterceptor {
 		
        logInfo.setDeviceId("12345678");
        logInfo.setIpAddress(ipAddress);
-       task.addQueue(logInfo);
-		//systemLogService.saveLog(content, ipAddress, operation, operationType, clock.getTotalTimeSeconds(), deviceId);
+       if( null != task){
+    	   task.addQueue(logInfo);
+       }else{
+    	   systemLogService.saveLog(content, ipAddress, operation, operationType, clock.getTotalTimeSeconds(), "123456");
+       }
 		//返回执行信息
        return object;
 	}

@@ -5,6 +5,8 @@ package com.xiaoshu.task.impl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.xiaoshu.model.LogInfo;
@@ -41,10 +43,12 @@ import com.xiaoshu.task.DataHandler;
  */
 @Component(value="logHandler")
 public class LogDataHandler implements DataHandler<LogInfo> {
-
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
     @Override
     public void handlerData(List<LogInfo> t) {
-        System.out.println("将 Log 数据插入到数据库 , 数据量为： size" + t.size());
+    	logger.info("====> save the Logs into the dataBase, the size is :{}", t.size());
+        //System.out.println("将 Log 数据插入到数据库 , 数据量为： size" + t.size());
         //LogService.batchSaveLog(List<LogInfo> logs);
     }
 
