@@ -45,7 +45,7 @@ public class RestTemplateConfig {
 	@Bean
 	@ConditionalOnMissingBean(RestTemplate.class)
 	public RestTemplate  restTemplate(){
-		logger.info("====> 初始化:RestTemplate 工具类");
+		logger.info("========> initial The Tools : RestTemplate Tools <========");
 		return this.restTemplate;
 	}
 }

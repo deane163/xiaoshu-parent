@@ -37,6 +37,6 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 public class SessionConfig {
 
 	public SessionConfig(){
-		System.out.println("====>初始化： Spring Session 配置信息");
+		System.out.println("======>Initial the Configure of Spring Session ： Spring Session <======");
 	}
 }
