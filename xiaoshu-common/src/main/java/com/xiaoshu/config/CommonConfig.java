@@ -52,25 +52,14 @@ public class CommonConfig {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     
-    
     @SuppressWarnings({"rawtypes"})
-    private LogTask logTask;
-    
-    // 注入处理日志数据的实现类
     @Autowired
-    @Qualifier("logHandler")
-    private LogDataHandler logDataHandler;
-    
-    @SuppressWarnings({"rawtypes", "unchecked"})
-	@Bean(value = "logTask")
-    private LogTask logTask(){
-		logTask = new LogTask(logDataHandler);
-    	return logTask; 
-    }
+    private LogTask logTask;
     
     @PostConstruct
     public void start(){
         logger.info("====> start handle the log information ! ");
+        logTask.setAsync(true);
         Thread logThread = new Thread(logTask);
         logThread.start();
     }

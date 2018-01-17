@@ -40,12 +40,12 @@ import com.xiaoshu.task.Task;
  * 
  * Copyright (C)2013-2018 小树盛凯科技 All rights reserved.
  */
-
+@Component("logTask")
 public class LogTask<LogInfo> extends Task<LogInfo> {
     /**
      * @param handler
      */
-    public LogTask(DataHandler<LogInfo> handler) {
+    public LogTask(@Autowired @Qualifier("logHandler") DataHandler<LogInfo> handler) {
         super(handler);
     }
     

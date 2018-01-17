@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.slf4j.Logger;
@@ -52,6 +53,8 @@ public abstract class Task <T> implements Runnable{
     public Queue<T> queues =  new ConcurrentLinkedQueue<T>();
     private ReentrantLock lock = new ReentrantLock();
     
+    
+    private AtomicBoolean async = new AtomicBoolean(false);
     private static Task<?> task;
     /**
      * 使用当独线程时，线程的休眠时间
@@ -64,7 +67,15 @@ public abstract class Task <T> implements Runnable{
         this.handler = handler;
     }
     
-    public void addQueue(T t){
+    public AtomicBoolean getAsync() {
+		return async;
+	}
+
+	public void setAsync(Boolean isboolean) {
+		this.async.set(isboolean);
+	}
+
+	public void addQueue(T t){
         System.out.println("异步加入队列");
         queues.add(t);
     }
