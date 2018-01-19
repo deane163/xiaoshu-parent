@@ -32,7 +32,7 @@ import java.lang.annotation.Target;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : 
+ * @Description : 客户端认证的注解信息，认证客户端是否合法
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2017年12月19日下午8:00:29
