@@ -3,6 +3,8 @@
  */
 package com.xiaoshu.task.impl;
 
+import java.lang.reflect.Constructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -48,6 +50,26 @@ public class LogTask<LogInfo> extends Task<LogInfo> {
     public LogTask(@Autowired @Qualifier("logHandler") DataHandler<LogInfo> handler) {
         super(handler);
     }
+
+    @SuppressWarnings({"rawtypes"})
+	@Override
+	public  Task<?> getInstance(Class<? extends Task> taskClass, DataHandler dataHandler) {
+		if(null == task){
+			try {
+				Constructor<? extends Task> constructor = taskClass.getConstructor(DataHandler.class);
+				task = constructor.newInstance(handler);
+			} catch (NoSuchMethodException e) {
+				
+				e.printStackTrace();
+			} catch (SecurityException e) {
+				
+				e.printStackTrace();
+			} catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		return task;
+	}
     
 
 }

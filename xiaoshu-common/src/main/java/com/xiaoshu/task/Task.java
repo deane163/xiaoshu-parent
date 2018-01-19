@@ -55,13 +55,13 @@ public abstract class Task <T> implements Runnable{
     
     
     private AtomicBoolean async = new AtomicBoolean(false);
-    private static Task<?> task;
+    protected static Task<?> task;
     /**
      * 使用当独线程时，线程的休眠时间
      */
     private static final long SLEEP_TIME = 5000;
     
-    private DataHandler<T> handler ;
+    protected DataHandler<T> handler ;
     
     public Task(DataHandler<T> handler){
         this.handler = handler;
@@ -81,21 +81,12 @@ public abstract class Task <T> implements Runnable{
     }
     
     @SuppressWarnings("rawtypes")
-    public static Task getInstance(DataHandler dataHandler) throws Exception{
+    public  Task getInstance(DataHandler dataHandler) throws Exception{
         return getInstance(LogTask.class,dataHandler );
     }
     
     @SuppressWarnings("rawtypes")
-    public static Task getInstance(Class<? extends Task> taskClass, DataHandler dataHandler) 
-            throws NoSuchMethodException, SecurityException, InstantiationException, 
-            IllegalAccessException, IllegalArgumentException, InvocationTargetException{
-       if (task == null){
-           Constructor<? extends Task> constructor = taskClass.getConstructor(DataHandler.class);
-           task = constructor.newInstance(dataHandler);
-       }
-        return task;
-    }
-    
+    public  abstract Task getInstance(Class<? extends Task> taskClass, DataHandler dataHandler);
     /**
      * 执行异步操作
      */
