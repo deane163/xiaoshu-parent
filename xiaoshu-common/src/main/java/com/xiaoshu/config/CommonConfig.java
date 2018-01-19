@@ -39,7 +39,7 @@ import com.xiaoshu.task.impl.LogTask;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : 
+ * @Description : 配置启动文件，用于启动异步日志提交的功能
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2018年1月13日 下午4:48:58
