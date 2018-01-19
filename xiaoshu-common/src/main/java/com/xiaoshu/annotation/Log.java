@@ -32,7 +32,8 @@ import com.xiaoshu.enums.LogType;
  * 　　　┗┻┛　┗┻┛
  *
  *
- * @Description : Log 日志信息
+ * @Description : Log 日志信息，用于拦截此 Annotation注解信息，并将日志信息保存到数据库
+ * 
  * ---------------------------------
  * @Author : deane.administrator
  * @Date : Create in 2017年12月25日下午5:31:16
