@@ -53,7 +53,9 @@ public abstract class Task <T> implements Runnable{
     public Queue<T> queues =  new ConcurrentLinkedQueue<T>();
     private ReentrantLock lock = new ReentrantLock();
     
-    
+    /**
+     * 判断是否打开异步数据的接口，  true ：异步加入数据     false : 同步加入数据
+     */
     private AtomicBoolean async = new AtomicBoolean(false);
     protected static Task<?> task;
     /**
@@ -76,13 +78,13 @@ public abstract class Task <T> implements Runnable{
 	}
 
 	public void addQueue(T t){
-        System.out.println("异步加入队列");
+        logger.info("将数据 加入到队列中... ");
         queues.add(t);
     }
     
     @SuppressWarnings("rawtypes")
     public  Task getInstance(DataHandler dataHandler) throws Exception{
-        return getInstance(LogTask.class,dataHandler );
+        return getInstance(LogTask.class, dataHandler);
     }
     
     @SuppressWarnings("rawtypes")

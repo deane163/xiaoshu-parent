@@ -71,5 +71,4 @@ public class LogTask<LogInfo> extends Task<LogInfo> {
 		return task;
 	}
     
-
 }
